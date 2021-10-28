@@ -20,6 +20,7 @@
 							<thead class="table-shadow title">
 								<tr>
 									<th>&nbsp;&nbsp;No.</th>
+									<th>&nbsp;&nbsp;Product No.</th>
 									<th>&nbsp;&nbsp;Name</th>
 									<th>&nbsp;&nbsp;Images</th>
 									<th>&nbsp;&nbsp;Category</th>
@@ -31,12 +32,13 @@
 							<tbody>
 								<?php foreach ($items as $row) : ?>
 									<tr class="tb-body table-shadow ">
+									<td class="catalogue"></td>
 										<td class="catalogue"><?= $row['Product_id'] ?></td>
 										<td class="catalogue" style="text-transform: uppercase;"><?= $row['Product_Name'] ?></td>
 										<td class="catalogue" style="text-align:center;">
 											<img src="<?= "uploads/" . $row['Product_img'] ?>" width="150" height="150" style="border-radius:10px;">
 										</td>
-										<td class="catalogue"><?= $row['Product_cat'] ?></td>
+										<td class="catalogue"><?= $row['Cat_id'] ?></td>
 										<td class="catalogue"><?= $row['Product_Price'] ?></td>
 										<td class="catalogue"><?= $row['Product_Quantity'] ?></td>
 										<td class="catalogue" style="text-align:center;">
@@ -58,7 +60,12 @@
 </main>
 <script>
 	$(document).ready(function() {
-		$('#cataloguetable').DataTable();
+		var t = $('#cataloguetable').DataTable();
+        t.on('order.dt search.dt', function () {
+        t.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
 	});
 </script>
 <!-- MAIN : END -->

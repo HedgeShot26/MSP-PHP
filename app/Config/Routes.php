@@ -57,6 +57,10 @@ $routes->get('catalogue/itemEdit/(:num)', 'Dashboard::itemEdit/$1');
 $routes->get('catalogue/itemUpdate/(:num)', 'Dashboard::itemUpdate/$1');
 $routes->get('catalogue/delete/(:num)', 'Dashboard::itemDelete/$1');
 
+$routes->get('sales', 'Sales::sales');
+$routes->get('sales/add', 'Sales::salesAdd');
+$routes->post('sales/store', 'Sales::salesStore');
+
 
 
 /*

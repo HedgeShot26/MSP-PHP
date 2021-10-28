@@ -89,7 +89,12 @@ class Dashboard extends BaseController
 		if (!session()->has('loggedUser')) {
 			return redirect()->to('/')->with('fail', 'You must logged in !!!');
 		}
-		return view('dashboard/C_store');
+		$catModel = new \App\Models\CategoryModel();
+		$category = $catModel->findAll();
+		$data = [
+			'category' => $category
+		];
+		return view('dashboard/C_store', $data);
 	}
 
 	public function itemStore()
@@ -108,7 +113,7 @@ class Dashboard extends BaseController
 			'Product_Name' => $this->request->getPost('Product_Name'),
 			'Product_Price' => $this->request->getPost('Product_Price'),
 			'Product_img' => $imageName,
-			'Product_cat' => $this->request->getPost('Product_cat'),
+			'Cat_id' => $this->request->getPost('Product_cat'),
 			'Product_Quantity' => $this->request->getPost('Product_Quantity'),
 		];
 		$productModel->insert($data);
@@ -121,8 +126,13 @@ class Dashboard extends BaseController
 			return redirect()->to('/')->with('fail', 'You must logged in !!!');
 		}
 		$productModel = new \App\Models\ProductModel();
+		$catModel = new \App\Models\CategoryModel();
+		$category = $catModel->findAll();
 		$itemInfo = $productModel->find($Product_id);
-		$data = ['itemInfo' => $itemInfo];
+		$data = [
+			'itemInfo' => $itemInfo,
+			'category' => $category
+		];
 		return view('dashboard/C_edit', $data);
 	}
 
@@ -150,7 +160,7 @@ class Dashboard extends BaseController
 			'Product_Name' => $this->request->getPost('Product_Name'),
 			'Product_Price' => $this->request->getPost('Product_Price'),
 			'Product_img' => $imageName,
-			'Product_cat' => $this->request->getPost('Product_cat'),
+			'Cat_id' => $this->request->getPost('Product_cat'),
 			'Product_Quantity' => $this->request->getPost('Product_Quantity'),
 		];
 		$productModel->update($Product_id, $data);

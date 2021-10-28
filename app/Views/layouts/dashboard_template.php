@@ -61,6 +61,7 @@
                 <ul>
                     <li><a href="<?= site_url('profile') ?>">Profile</a></li>
                     <li><a href="<?= site_url('users') ?>">Users</a></li>
+                    <li><a href="<?= site_url('sales') ?>">Sales</a></li>
                     <li><a href="<?= site_url('catalogue') ?>">Products</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -103,11 +104,9 @@
         </div>
         <hr>
         <div class="container text-center">
-            <div class="copyright">
-                &copy; <?= lang('home.footer.copy'); ?>
-            </div>
+
             <div class="credits">
-                Designed by <span><b>INTI International IT Student 2021</b></span>
+                Designed by <span><b>Team Emerald 2021</b></span>
             </div>
         </div>
         <div style="height:8px;"></div>

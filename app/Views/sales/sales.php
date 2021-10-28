@@ -20,14 +20,16 @@
 							<thead class="table-shadow title">
 								<tr>
 									<th>&nbsp;&nbsp;No.</th>
+                                    <th>&nbsp;&nbsp;Sales No.</th>
 									<th>&nbsp;&nbsp;TotalPrice</th>
 									<th>&nbsp;&nbsp;Date</th>
 									<th>&nbsp;&nbsp;Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach ($items as $row) : ?>
+								<?php foreach ($sales as $row) : ?>
 									<tr class="tb-body table-shadow ">
+                                        <td class="catalogue"> </td>
 										<td class="catalogue"><?= $row['Sales_id'] ?></td>
 										<td class="catalogue" style="text-transform: uppercase;"><?= $row['Sales_price'] ?></td>
                                         <td class="catalogue" style="text-transform: uppercase;"><?= $row['Product_date'] ?></td>
@@ -50,7 +52,12 @@
 </main>
 <script>
 	$(document).ready(function() {
-		$('#cataloguetable').DataTable();
+		var t = $('#cataloguetable').DataTable();
+        t.on('order.dt search.dt', function () {
+        t.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
 	});
 </script>
 <!-- MAIN : END -->

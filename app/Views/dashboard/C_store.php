@@ -132,7 +132,12 @@
                         <div class="form-group mb-2">
                             <label class="label">Product Category</label>
                             <div class="col mt-1 mb-3">
-                                <input type="text" name="Product_cat" class="form-control" required placeholder="Enter Product Category" style="border: 1px solid #D8E3E7; border-radius:30px;">
+                                <select name = "Product_cat" class="form-select" aria-label="Default select example">
+                                 <option selected disabled>Select Category</option>
+                                 <?php foreach ($category as $option) : ?>
+                                 <option value="<?= $option['Cat_id'] ?>"><?= $option['Cat_name'] ?></option>
+                                 <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
