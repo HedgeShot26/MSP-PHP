@@ -31,12 +31,10 @@
 										<td class="user weight"><?= $row['name'] ?></td>
 										<td class="user weight"><?= $row['email'] ?></td>
 										<td class="user weight">
-											<?php if ($row['role'] != "admin") {             ?>
 												<form action="<?= base_url('dashboard/delete/' . $row['id']) ?>" method="POST">
 													<input type="hidden" name="_method" value="DELETE" />
 													<button type="submit" class="btn btn-sm" style="background-color:#cf0000; color:#ffffff;">DELETE</button>
 												</form>
-											<?php }  ?>
 										</td>
 									</tr>
 								<?php endforeach; ?>

@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/mfd/mfd-logo.jpg" rel="icon">
-    <link href="assets/img/mfd/mfd-logo.jpg" rel="apple-touch-icon">
+    <link href="" rel="icon">
+    <link href="" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -49,10 +49,10 @@
         <div class="container d-flex align-items-center shadow-round size">
 
             <a class="logo">
-                <img src="assets/img/mfd/mfd-logo.jpg" alt="MFD Logo" class="img-fluid">
+                <img src="" alt="PHP Logo" class="img-fluid">
             </a>
             <h2 class="logo me-auto">
-                <a>Malaysia Federation of The Deaf (Dashboard)</a>
+                <a>People Health Pharmacy</a>
             </h2>
             <!-- me-auto -->
 
@@ -61,8 +61,7 @@
                 <ul>
                     <li><a href="<?= site_url('profile') ?>">Profile</a></li>
                     <li><a href="<?= site_url('users') ?>">Users</a></li>
-                    <li><a href="<?= site_url('contacts') ?>">Messages List</a></li>
-                    <li><a href="<?= site_url('catalogue') ?>">Catalogue</a></li>
+                    <li><a href="<?= site_url('catalogue') ?>">Products</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>

@@ -71,13 +71,13 @@ class Dashboard extends BaseController
 			return redirect()->to('/')->with('fail', 'You must logged in !!!');
 		}
 		$usersModel = new \App\Models\UsersModel();
-		$shopModel = new \App\Models\ShopModel();
+		$productModel = new \App\Models\ProductModel();
 		$loggedUserID = session()->get('loggedUser');
 		$userInfo = $usersModel->find($loggedUserID);
-		$items = $shopModel->findAll();
+		$items = $productModel->findAll();
 		$data = [
-			'meta_title' => 'Book Catalogue | MFD Admin',
-			'title' => 'Books Catalogue',
+			'meta_title' => 'Product Inventory | PHP',
+			'title' => 'Product Inventory',
 			'userInfo' => $userInfo,
 			'items' => $items
 		];
@@ -97,44 +97,46 @@ class Dashboard extends BaseController
 		if (!session()->has('loggedUser')) {
 			return redirect()->to('/')->with('fail', 'You must logged in !!!');
 		}
-		$shopModel = new \App\Models\ShopModel();
-		$file = $this->request->getFile('item_image');
+		$productModel = new \App\Models\ProductModel();
+		$file = $this->request->getFile('Product_img');
 		if ($file->isValid() && !$file->hasMoved()) {
 			$imageName = $file->getRandomName();
 			$file->move('uploads/', $imageName);
 		}
 
 		$data = [
-			'item_name' => $this->request->getPost('item_name'),
-			'item_price' => $this->request->getPost('item_price'),
-			'item_img' => $imageName,
+			'Product_Name' => $this->request->getPost('Product_Name'),
+			'Product_Price' => $this->request->getPost('Product_Price'),
+			'Product_img' => $imageName,
+			'Product_cat' => $this->request->getPost('Product_cat'),
+			'Product_Quantity' => $this->request->getPost('Product_Quantity'),
 		];
-		$shopModel->insert($data);
+		$productModel->insert($data);
 		return redirect()->to(base_url('catalogue'))->with('status', 'Item Added Successfully');
 	}
 
-	public function itemEdit($item_id)
+	public function itemEdit($Product_id)
 	{
 		if (!session()->has('loggedUser')) {
 			return redirect()->to('/')->with('fail', 'You must logged in !!!');
 		}
-		$shopModel = new \App\Models\ShopModel();
-		$itemInfo = $shopModel->find($item_id);
+		$productModel = new \App\Models\ProductModel();
+		$itemInfo = $productModel->find($Product_id);
 		$data = ['itemInfo' => $itemInfo];
 		return view('dashboard/C_edit', $data);
 	}
 
-	public function itemUpdate($item_id)
+	public function itemUpdate($Product_id)
 	{
 		if (!session()->has('loggedUser')) {
 			return redirect()->to('/')->with('fail', 'You must logged in !!!');
 		}
-		$shopModel = new \App\Models\ShopModel();
-		$itemInfo = $shopModel->find($item_id);
-		$old_img_name = $itemInfo['item_img'];
-		$file = $this->request->getFile('item_image');
+		$productModel = new \App\Models\ProductModel();
+		$itemInfo = $productModel->find($Product_id);
+		$old_img_name = $itemInfo['Product_img'];
+		$file = $this->request->getFile('Product_img');
 		if ($file->isValid() && !$file->hasMoved()) {
-			$old_img_name = $itemInfo['item_img'];
+			$old_img_name = $itemInfo['Product_img'];
 			if (file_exists("uploads/.$old_img_name")) {
 				unlink('uploads/', $imageName);
 			}
@@ -145,26 +147,28 @@ class Dashboard extends BaseController
 		}
 
 		$data = [
-			'item_name' => $this->request->getPost('item_name'),
-			'item_price' => $this->request->getPost('item_price'),
-			'item_img' => $imageName,
+			'Product_Name' => $this->request->getPost('Product_Name'),
+			'Product_Price' => $this->request->getPost('Product_Price'),
+			'Product_img' => $imageName,
+			'Product_cat' => $this->request->getPost('Product_cat'),
+			'Product_Quantity' => $this->request->getPost('Product_Quantity'),
 		];
-		$shopModel->update($item_id, $data);
+		$productModel->update($Product_id, $data);
 		return redirect()->to(base_url('catalogue'))->with('status', 'Item Added Successfully');
 	}
 
-	public function itemDelete($item_id)
+	public function itemDelete($Product_id)
 	{
 		if (!session()->has('loggedUser')) {
 			return redirect()->to('/')->with('fail', 'You must logged in !!!');
 		}
-		$shopModel = new \App\Models\ShopModel();
-		$data = $shopModel->find($item_id);
-		$imagefile = $data['item_img'];
+		$productModel = new \App\Models\ProductModel();
+		$data = $productModel->find($Product_id);
+		$imagefile = $data['Product_img'];
 		if (file_exists("uplaods/" . $imagefile)) {
 			unlink("uploads/" . $imagefile);
 		};
-		$shopModel->delete($item_id);
+		$productModel->delete($Product_id);
 		return redirect()->to(base_url('catalogue'))->with('status', 'Item Deleted Successfully');
 	}
 

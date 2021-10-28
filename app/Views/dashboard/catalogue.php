@@ -22,24 +22,28 @@
 									<th>&nbsp;&nbsp;No.</th>
 									<th>&nbsp;&nbsp;Name</th>
 									<th>&nbsp;&nbsp;Images</th>
+									<th>&nbsp;&nbsp;Category</th>
 									<th>&nbsp;&nbsp;Price</th>
+									<th>&nbsp;&nbsp;Quantity</th>
 									<th>&nbsp;&nbsp;Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php foreach ($items as $row) : ?>
 									<tr class="tb-body table-shadow ">
-										<td class="catalogue"><?= $row['item_id'] ?></td>
-										<td class="catalogue" style="text-transform: uppercase;"><?= $row['item_name'] ?></td>
+										<td class="catalogue"><?= $row['Product_id'] ?></td>
+										<td class="catalogue" style="text-transform: uppercase;"><?= $row['Product_Name'] ?></td>
 										<td class="catalogue" style="text-align:center;">
-											<img src="<?= "uploads/" . $row['item_img'] ?>" width="150" height="150" style="border-radius:10px;">
+											<img src="<?= "uploads/" . $row['Product_img'] ?>" width="150" height="150" style="border-radius:10px;">
 										</td>
-										<td class="catalogue"><?= $row['item_price'] ?></td>
+										<td class="catalogue"><?= $row['Product_cat'] ?></td>
+										<td class="catalogue"><?= $row['Product_Price'] ?></td>
+										<td class="catalogue"><?= $row['Product_Quantity'] ?></td>
 										<td class="catalogue" style="text-align:center;">
-											<a href="<?= base_url('catalogue/itemEdit/' . $row['item_id']) ?>" class="btn btn-sm" style="background-color:#07689F; color:#ffffff;">EDIT</a>
+											<a href="<?= base_url('catalogue/itemEdit/' . $row['Product_id']) ?>" class="btn btn-sm" style="background-color:#07689F; color:#ffffff;">EDIT</a>
 											<br>
 											<div style="height:5px;"></div>
-											<a href="<?= base_url('dashboard/itemDelete/' . $row['item_id']) ?>" class="btn btn-sm" style="background-color:#cf0000; color:#ffffff;">DELETE</a>
+											<a href="<?= base_url('dashboard/itemDelete/' . $row['Product_id']) ?>" class="btn btn-sm" style="background-color:#cf0000; color:#ffffff;">DELETE</a>
 										</td>
 									</tr>
 								<?php endforeach; ?>

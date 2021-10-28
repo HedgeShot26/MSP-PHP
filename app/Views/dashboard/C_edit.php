@@ -88,7 +88,7 @@
 
                     <div style="border-radius: 30px;background-color: #07689F; color: white; text-transform: uppercase; font-weight: bold;">
                         <h3 class="mt-1 py-1">
-                            <span class="ps-4 ">Edit items</span>
+                            <span class="ps-4 ">Edit Products</span>
                             <a href="<?= base_url('catalogue') ?>" class="btn btn-danger btn-sm float-end me-1 fw-bold" style="border: 3px solid red; border-radius:30px; width:20%;">BACK</a>
                         </h3>
                     </div>
@@ -105,33 +105,45 @@
 
                     <div style="height:5px;"></div>
 
-                    <form action="<?= base_url('dashboard/itemUpdate/' . $itemInfo['item_id']) ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('dashboard/itemUpdate/' . $itemInfo['Product_id']) ?>" method="post" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
 
                         <div class="form-group mb-2">
-                            <label class="label">Item Name</label>
+                            <label class="label">Product Name</label>
                             <div class="col mt-1 mb-3">
-                                <input type="text" name="item_name" class="form-control" value="<?= $itemInfo['item_name'] ?>" required placeholder="Enter Item Name" style="border: 1px solid #D8E3E7; border-radius:30px;">
+                                <input type="text" name="Product_Name" class="form-control" value="<?= $itemInfo['Product_Name'] ?>" required placeholder="Enter Product Name" style="border: 1px solid #D8E3E7; border-radius:30px;">
                             </div>
                         </div>
 
                         <div class="form-group mb-2">
-                            <label class="label">Item Price</label>
+                            <label class="label">Product Price</label>
                             <div class="col mt-1 mb-3">
-                                <input type="text" name="item_price" class="form-control" value="<?= $itemInfo['item_price'] ?>" required placeholder="Enter Item Price" style="border: 1px solid #D8E3E7; border-radius:30px;">
+                                <input type="text" name="Product_Price" class="form-control" value="<?= $itemInfo['Product_Price'] ?>" required placeholder="Enter Product Price" style="border: 1px solid #D8E3E7; border-radius:30px;">
                             </div>
                         </div>
 
+                        <div class="form-group mb-2">
+                            <label class="label">Product Quantity</label>
+                            <div class="col mt-1 mb-3">
+                                <input type="text" name="Product_Quantity" class="form-control" value="<?= $itemInfo['Product_Quantity'] ?>" required placeholder="Enter Product Quantity" style="border: 1px solid #D8E3E7; border-radius:30px;">
+                            </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="label">Product Category</label>
+                            <div class="col mt-1 mb-3">
+                                <input type="text" name="Product_cat" class="form-control" value="<?= $itemInfo['Product_cat'] ?>" required placeholder="Enter Product Category" style="border: 1px solid #D8E3E7; border-radius:30px;">
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <label class="label">Item Image</label>
+                            <label class="label">Product Image</label>
                             <div class="container mt-1" style="border: 1px solid #D8E3E7; border-radius:30px; background-color:#fff;">
 
                                 <div class="col mt-3 mb-3">
-                                    <input type="file" name="item_image" class="form-control" style="border: 1px solid #D8E3E7; border-radius:30px;" />
+                                    <input type="file" name="Product_img" class="form-control" style="border: 1px solid #D8E3E7; border-radius:30px;" />
                                 </div>
 
                                 <div class="col-md-5 mb-3">
-                                    <img src="<?= base_url('uploads/' . $itemInfo['item_img']) ?>" class="w-100" alt="Item Image" style="border: 1px solid #D8E3E7; border-radius:30px;">
+                                    <img src="<?= base_url('uploads/' . $itemInfo['Product_img']) ?>" class="w-100" alt="Product Image" style="border: 1px solid #D8E3E7; border-radius:30px;">
                                 </div>
 
                             </div>

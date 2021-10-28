@@ -16,7 +16,7 @@
                 <div style="height:6px;"></div>
 
                 <div class="img">
-                    <img src="assets/img/mfd/mfd-logo.jpg" alt="MFD Logo" class="img-thumbnail" width="100" height="80" style="border-radius:10px; margin-bottom:8px;">
+                    <img src="" alt="PHP Logo" class="img-thumbnail" width="100" height="80" style="border-radius:10px; margin-bottom:8px;">
                 </div>
 
                 <div style="height:6px;"></div>
