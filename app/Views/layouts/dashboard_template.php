@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="" rel="icon">
-    <link href="" rel="apple-touch-icon">
+    <link href="assets/img/PHPlogo.png" rel="icon">
+    <link href="assets/img/PHPlogo.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -49,7 +49,7 @@
         <div class="container d-flex align-items-center shadow-round size">
 
             <a class="logo">
-                <img src="" alt="PHP Logo" class="img-fluid">
+                <img src="assets/img/PHPlogo.png" alt="PHP Logo" class="img-fluid">
             </a>
             <h2 class="logo me-auto">
                 <a>People Health Pharmacy</a>

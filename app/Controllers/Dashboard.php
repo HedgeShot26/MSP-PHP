@@ -20,7 +20,7 @@ class Dashboard extends BaseController
 		$loggedUserID = session()->get('loggedUser');
 		$userInfo = $usersModel->find($loggedUserID);
 		$data = [
-			'meta_title' => 'User Profile | MFD Admin',
+			'meta_title' => 'User Profile | PHP Admin',
 			'title' => 'User Profile',
 			'userInfo' => $userInfo
 		];
@@ -38,7 +38,7 @@ class Dashboard extends BaseController
 		$userInfo = $usersModel->find($loggedUserID);
 		$contacts = $contactModel->findAll();
 		$data = [
-			'meta_title' => 'Messages List | MFD Admin',
+			'meta_title' => 'Messages List | PHP Admin',
 			'title' => 'Messages List',
 			'userInfo' => $userInfo,
 			'contacts' => $contacts,
@@ -57,7 +57,7 @@ class Dashboard extends BaseController
 		$userInfo = $usersModel->find($loggedUserID);
 		$users = $usersModel->findAll();
 		$data = [
-			'meta_title' => 'Users | MFD Admin',
+			'meta_title' => 'Users | PHP Admin',
 			'title' => 'Users',
 			'userInfo' => $userInfo,
 			'users' => $users
@@ -252,25 +252,5 @@ class Dashboard extends BaseController
 		return redirect()->to(base_url('users'))->with('status', 'User Deleted Sucessfully');
 	}
 
-	public function status($msg_id)
-	{
-		if (!session()->has('loggedUser')) {
-			return redirect()->to('/')->with('fail', 'You must logged in !!!');
-		}
-		$contactModel = new \App\Models\ContactModel();
-		$msgInfo = $contactModel->find($msg_id);
-		$old_status = $msgInfo['status'];
-		if ($old_status == 0) {
-			$newStatus = 1;
-		} else {
-			$newStatus = 0;
-		}
-
-		$data = [
-			'status' => $newStatus,
-		];
-		$contactModel->update($msg_id, $data);
-		return redirect()->to(base_url('contacts'));
-	}
 
 }

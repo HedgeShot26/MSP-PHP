@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row" style="margin:20px">
                 <div>
-                    <h2>PHP</h2>
+                    <h2>People Health Pharmacy</h2>
                 </div>
                 <div>
                     <h4>Login</h4>
@@ -16,7 +16,7 @@
                 <div style="height:6px;"></div>
 
                 <div class="img">
-                    <img src="" alt="PHP Logo" class="img-thumbnail" width="100" height="80" style="border-radius:10px; margin-bottom:8px;">
+                    <img src="assets/img/PHPlogo.png" alt="PHP Logo" class="img-thumbnail" width="280" height="250" style="border-radius:10px; margin-bottom:8px;">
                 </div>
 
                 <div style="height:6px;"></div>
