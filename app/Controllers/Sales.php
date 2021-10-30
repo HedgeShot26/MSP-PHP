@@ -29,4 +29,21 @@ class Sales extends BaseController
 		];
 		return view('sales/sales', $data);
 	}
+
+	public function salesAdd()
+	{
+		if (!session()->has('loggedUser')) {
+			return redirect()->to('/')->with('fail', 'You must logged in !!!');
+		}
+		$productModel = new \App\Models\ProductModel();
+		$catModel = new \App\Models\CategoryModel();
+		$category = $catModel->findAll();
+		$items = $productModel->findAll();
+		$data = [
+			'category' => $category,
+			'items' => $items
+		];
+		return view('sales/SPro_list', $data);
+	}
+	
 }
