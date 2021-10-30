@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row" style="margin:20px">
                 <div>
-                    <h2>People Health Pharmacy</h2>
+                    <h2>Jerry Health Pharmacy</h2>
                 </div>
                 <div>
                     <h4>Login</h4>
