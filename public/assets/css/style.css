@@ -829,7 +829,7 @@ p {
   background-color:#fd5031;
   color: #fff;
   position: absolute;
-  top: 92%;
+  top: 100%;
   left: 50%;
   transform:translate(-50%,-50%);
 
