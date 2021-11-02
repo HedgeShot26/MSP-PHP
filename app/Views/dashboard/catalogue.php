@@ -38,14 +38,14 @@
 										<td class="catalogue" style="text-align:center;">
 											<img src="<?= "uploads/" . $row['Product_img'] ?>" width="150" height="150" style="border-radius:10px;">
 										</td>
-										<td class="catalogue"><?= $row['Cat_id'] ?></td>
+										<td class="catalogue"><?= $row['Category'] ?></td>
 										<td class="catalogue"><?= $row['Product_Price'] ?></td>
 										<td class="catalogue"><?= $row['Product_Quantity'] ?></td>
 										<td class="catalogue" style="text-align:center;">
-											<a href="<?= base_url('catalogue/itemEdit/' . $row['Product_id']) ?>" class="btn btn-sm" style="background-color:#07689F; color:#ffffff;">EDIT</a>
+											<a href="<?= base_url('Catalogue/itemEdit/' . $row['Product_id']) ?>" class="btn btn-sm" style="background-color:#07689F; color:#ffffff;">EDIT</a>
 											<br>
 											<div style="height:5px;"></div>
-											<a href="<?= base_url('dashboard/itemDelete/' . $row['Product_id']) ?>" class="btn btn-sm" style="background-color:#cf0000; color:#ffffff;">DELETE</a>
+											<a href="<?= base_url('Catalogue/itemDelete/' . $row['Product_id']) ?>" class="btn btn-sm" style="background-color:#cf0000; color:#ffffff;">DELETE</a>
 										</td>
 									</tr>
 								<?php endforeach; ?>

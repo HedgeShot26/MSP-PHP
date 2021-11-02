@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2021 at 10:20 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Nov 02, 2021 at 03:30 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,29 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
---
-
-CREATE TABLE `category` (
-  `Cat_id` int(11) NOT NULL,
-  `Cat_name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`Cat_id`, `Cat_name`) VALUES
-(1, 'Medical Supplies'),
-(2, 'Personal Care Products'),
-(3, 'Vitamins & Supplements'),
-(4, 'Sexual Wellness'),
-(5, 'Skin Care & Beauty'),
-(6, 'Healthy Foods & Drinks');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `product`
 --
 
@@ -54,7 +31,7 @@ CREATE TABLE `product` (
   `Product_id` int(11) NOT NULL,
   `Product_Name` text NOT NULL,
   `Product_img` text NOT NULL,
-  `Cat_id` int(11) NOT NULL,
+  `Category` text NOT NULL,
   `Product_Price` double NOT NULL,
   `Product_Quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -63,22 +40,22 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`Product_id`, `Product_Name`, `Product_img`, `Cat_id`, `Product_Price`, `Product_Quantity`) VALUES
-(8, 'ACCU-Chek Active GLU STRP 25S', '1635669744_dbe71b17998fe9e9cf20.png', 1, 42, 20),
-(9, 'ACCU-Chek FastClix Lancing Devic', '1635669815_2211be42d1d021fc2fdc.jpg', 1, 42.9, 20),
-(10, ' BACTIDOL MOUTHWASH 250ML', '1635669864_ab8eef7d30f88cf7ef84.jpg', 2, 18.5, 15),
-(11, ' Colgate Plax 750ml x2 Fresh Mint', '1635669894_987dc04f2af1053df9b7.png', 2, 29.9, 15),
-(12, 'Abbott Surbex Zinc 60\'s x 2', '1635669942_a3a205f593e360780ff4.jpg', 3, 99, 10),
-(13, 'Appeton Essential Vitamin C 500mg Orange 30\'s', '1635669983_dc5616ffd1a5dd2364e8.png', 3, 30.2, 10),
-(14, ' Durex Chocolate 12s', '1635670108_2fa89f3a8ed1c606d405.jpg', 4, 39.4, 25),
-(15, 'Durex Fetherlite 12s', '1635670161_33e7a256e5b7180fb264.jpg', 4, 36.9, 25),
-(16, 'Loreal Revitalift Dermalift Eye Cream 15ml', '1635670392_67e1121565a55f3f31e5.jpg', 5, 50.5, 8),
-(17, 'MZDK Tea Tree Oil Serum', '1635670442_0869e4a19deedebcee37.png', 5, 68, 8),
-(18, ' Bragg Apple Cider Vinegar 946ml', '1635670505_9a96f3d6b024a203dd5e.jpg', 6, 26.2, 5),
-(19, ' Brands Chicken Essence 70g 10s', '1635670556_b04149b141c2abe1028c.jpg', 6, 58, 5),
-(20, ' Rin Enzyme 1000ml', '1635670587_f9a56211fe55c26872bd.jpg', 6, 299, 1),
-(21, ' 50 Megumi Anti-Hair Loss Conditioner (Fresh) 250ml', '1635670764_6ca7f80d1dab0ebed53a.jpg', 2, 45, 6),
-(22, ' AVEENO DAILY MOIST BODY WASH 354ML', '1635670980_8fb18be22cc251c1e84b.jpg', 2, 35.2, 7);
+INSERT INTO `product` (`Product_id`, `Product_Name`, `Product_img`, `Category`, `Product_Price`, `Product_Quantity`) VALUES
+(8, 'ACCU-Chek Active GLU STRP 25S', '1635669744_dbe71b17998fe9e9cf20.png', 'Medical Supplies', 42, 20),
+(9, 'ACCU-Chek FastClix Lancing Devic', '1635669815_2211be42d1d021fc2fdc.jpg', 'Medical Supplies', 42.9, 20),
+(10, ' BACTIDOL MOUTHWASH 250ML', '1635669864_ab8eef7d30f88cf7ef84.jpg', 'Personal Care Products', 18.5, 15),
+(11, ' Colgate Plax 750ml x2 Fresh Mint', '1635669894_987dc04f2af1053df9b7.png', 'Personal Care Products', 29.9, 15),
+(12, 'Abbott Surbex Zinc 60\'s x 2', '1635669942_a3a205f593e360780ff4.jpg', 'Vitamins & Supplements', 99, 10),
+(13, 'Appeton Essential Vitamin C 500mg Orange 30\'s', '1635669983_dc5616ffd1a5dd2364e8.png', 'Vitamins & Supplements', 30.2, 10),
+(14, ' Durex Chocolate 12s', '1635670108_2fa89f3a8ed1c606d405.jpg', 'Sexual Wellness', 39.4, 25),
+(15, 'Durex Fetherlite 12s', '1635670161_33e7a256e5b7180fb264.jpg', 'Sexual Wellness', 36.9, 25),
+(16, 'Loreal Revitalift Dermalift Eye Cream 15ml', '1635670392_67e1121565a55f3f31e5.jpg', 'Skin Care & Beauty', 50.5, 8),
+(17, 'MZDK Tea Tree Oil Serum', '1635670442_0869e4a19deedebcee37.png', 'Skin Care & Beauty', 68, 8),
+(18, ' Bragg Apple Cider Vinegar 946ml', '1635670505_9a96f3d6b024a203dd5e.jpg', 'Healthy Foods & Drinks', 26.2, 5),
+(19, ' Brands Chicken Essence 70g 10s', '1635670556_b04149b141c2abe1028c.jpg', 'Healthy Foods & Drinks', 58, 5),
+(20, ' Rin Enzyme 1000ml', '1635670587_f9a56211fe55c26872bd.jpg', 'Healthy Foods & Drinks', 299, 1),
+(21, ' 50 Megumi Anti-Hair Loss Conditioner (Fresh) 250ml', '1635670764_6ca7f80d1dab0ebed53a.jpg', 'Personal Care Products', 45, 6),
+(22, ' AVEENO DAILY MOIST BODY WASH 354ML', '1635670980_8fb18be22cc251c1e84b.jpg', 'Personal Care Products', 35.2, 7);
 
 -- --------------------------------------------------------
 
@@ -132,12 +109,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
 --
 
 --
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`Cat_id`);
-
---
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -164,12 +135,6 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `Cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product`

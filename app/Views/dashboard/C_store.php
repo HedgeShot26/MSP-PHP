@@ -108,7 +108,7 @@
 
                     <div style="height:5px;"></div>
 
-                    <form action="<?= base_url('dashboard/itemStore') ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('Catalogue/itemStore') ?>" method="post" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
 
                         <div class="form-group mb-2">
@@ -134,9 +134,12 @@
                             <div class="col mt-1 mb-3">
                                 <select name = "Product_cat" class="form-select" aria-label="Default select example">
                                  <option selected disabled>Select Category</option>
-                                 <?php foreach ($category as $option) : ?>
-                                 <option value="<?= $option['Cat_id'] ?>"><?= $option['Cat_name'] ?></option>
-                                 <?php endforeach; ?>
+                                 <option value="Medical Supplies">Medical Supplies</option>
+                                 <option value="Personal Care Products">Personal Care Products</option>
+                                 <option value="Vitamins & Supplements">Vitamins & Supplements</option>
+                                 <option value="Sexual Wellness">Sexual Wellness</option>
+                                 <option value="Skin Care & Beauty">Skin Care & Beauty</option>
+                                 <option value="Healthy Foods & Drinks">Healthy Foods & Drinks</option>
                                 </select>
                             </div>
                         </div>

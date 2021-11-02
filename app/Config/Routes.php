@@ -50,12 +50,12 @@ $routes->get('register', 'Auth::register');
 $routes->post('save', 'Auth::save');
 $routes->delete('users/delete/(:num)', 'Dashboard::delete/$1');
 
-$routes->get('catalogue', 'Dashboard::catalogue');
-$routes->get('catalogue/add', 'Dashboard::itemAdd');
-$routes->post('catalogue/store', 'Dashboard::itemStore');
-$routes->get('catalogue/itemEdit/(:num)', 'Dashboard::itemEdit/$1');
-$routes->get('catalogue/itemUpdate/(:num)', 'Dashboard::itemUpdate/$1');
-$routes->get('catalogue/delete/(:num)', 'Dashboard::itemDelete/$1');
+$routes->get('catalogue', 'Catalogue::catalogue');
+$routes->get('catalogue/add', 'Catalogue::itemAdd');
+$routes->post('catalogue/store', 'Catalogue::itemStore');
+$routes->get('catalogue/itemEdit/(:num)', 'Catalogue::itemEdit/$1');
+$routes->get('catalogue/itemUpdate/(:num)', 'Catalogue::itemUpdate/$1');
+$routes->get('catalogue/delete/(:num)', 'Catalogue::itemDelete/$1');
 
 $routes->get('sales', 'Sales::sales');
 $routes->get('sales/add', 'Sales::salesAdd');
