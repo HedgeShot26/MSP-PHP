@@ -660,8 +660,8 @@ p {
 --------------------------------------------------------------*/
 
 #auth {
-  width: 670px;
-  height:630px;
+  width: 560px;
+  height:650px;
   padding: 5px;
   position: absolute;
   top: 50%;
@@ -751,6 +751,7 @@ p {
   color:#D8E3E7;
 }
 
+
 /*--------------------------------------------------------------
 # REGISTER FORM
 --------------------------------------------------------------*/
@@ -829,7 +830,7 @@ p {
   background-color:#fd5031;
   color: #fff;
   position: absolute;
-  top: 92%;
+  margin-top: 12%;
   left: 50%;
   transform:translate(-50%,-50%);
 
@@ -845,7 +846,7 @@ p {
   background-color:#14d403;
   color: #fff;
   position: absolute;
-  top: 92%;
+  margin-top: 10%;
   left: 50%;
   transform:translate(-50%,-50%);
 
