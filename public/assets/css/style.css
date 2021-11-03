@@ -831,7 +831,7 @@ p {
   position: absolute;
   top: 100%;
   left: 50%;
-  transform:translate(-50%,-50%);
+  transform:translate(-50%, 80%);
 
   font-weight: 500;
   box-shadow: 0 8px 18px rgba(150, 125, 125, 0.2);
