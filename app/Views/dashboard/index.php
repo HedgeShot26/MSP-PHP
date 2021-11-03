@@ -17,7 +17,7 @@
 						<div class="card in-box profile-shadow d-flex" style="width: 100%;">
 							<div class="row no-gutters">
 								<div class="col-sm-2">
-									<img class="card-img" src="assets/img/jerry.jpg" alt="Profile Picture">
+									<img class="card-img" src="assets/img/profile.jpg" alt="Profile Picture">
 								</div>
 								<div class="col-sm-9 mt-2">
 									<div class="card-body profile-shadow" style="border-radius: 30px; background-color: #fff; ">

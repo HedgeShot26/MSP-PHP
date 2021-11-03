@@ -59,9 +59,9 @@ $routes->get('catalogue/delete/(:num)', 'Catalogue::itemDelete/$1');
 
 $routes->get('sales', 'Sales::sales');
 $routes->get('sales/add', 'Sales::salesAdd');
-$routes->post('sales/store', 'Sales::salesStore');
 
-
+$routes->get('list', 'lists::lists');
+$routes->get('list/Addlist/(:num)', 'lists::Addlist/$1');
 
 /*
  * --------------------------------------------------------------------

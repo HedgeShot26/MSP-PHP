@@ -24,27 +24,25 @@
 									<th>&nbsp;&nbsp;Images</th>
 									<th>&nbsp;&nbsp;Category</th>
 									<th>&nbsp;&nbsp;Price</th>
-									<th>&nbsp;&nbsp;Quantity</th>
-									<th>&nbsp;&nbsp;Action</th>
+									<th>&nbsp;&nbsp;Quantity Selected</th>
+									<th>&nbsp;&nbsp;Sub Total</th>
 								</tr>
 							</thead>
 							<tbody>
-								<?php if($items) : ?>
+								<?php if ($list) : ?>
 								<?php foreach ($items as $row) : ?>
 									<tr class="tb-body table-shadow ">
 									<td class="catalogue"></td>
 										<td class="catalogue"><?= $row['Product_id'] ?></td>
 										<td class="catalogue" style="text-transform: uppercase;"><?= $row['Product_Name'] ?></td>
 										<td class="catalogue" style="text-align:center;">
-											<img src="<?= base_url("uploads/" . $row['Product_img']) ?>" width="150" height="150" style="border-radius:10px;">
+											<img src="<?= "uploads/" . $row['Product_img'] ?>" width="150" height="150" style="border-radius:10px;">
 										</td>
 										<td class="catalogue"><?= $row['Category'] ?></td>
 										<td class="catalogue"><?= $row['Product_Price'] ?></td>
-										<td class="catalogue"><?= $row['Product_Quantity'] ?></td>
-										<td class="catalogue" style="text-align:center;">
-											<a href="<?= base_url('lists/addlist/'. $row['Product_id']) ?>" class="btn btn-sm" style="background-color:#07689F; color:#ffffff;">Add Product</a>
-											<br>
-                                        </td>
+										<td class="catalogue"><?= $row['Quantity'] ?></td>
+										<td class="catalogue"><?= $row['Product_Price'] ?></td>
+										<td class="catalogue"><?= $row['Product_Price'] * $row['Quantity'] ?></td>
 									</tr>
 								<?php endforeach; ?>
 								<?php endif ?>

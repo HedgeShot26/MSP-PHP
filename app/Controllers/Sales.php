@@ -36,14 +36,8 @@ class Sales extends BaseController
 			return redirect()->to('/')->with('fail', 'You must logged in !!!');
 		}
 		$productModel = new \App\Models\ProductModel();
-		$catModel = new \App\Models\CategoryModel();
-		$category = $catModel->findAll();
-		$items = $productModel->findAll();
-		$data = [
-			'category' => $category,
-			'items' => $items
-		];
+		$data['items'] = $productModel->findAll();
+
 		return view('sales/SPro_list', $data);
 	}
-	
 }
