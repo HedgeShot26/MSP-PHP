@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <main id="main">
-<img src="assets/img/login_bg.jpg" alt="login background" width="1530" height="695" style="margin-top: 10px; filter: blur(5px); -webkit-filter: blur(5px)">
+<img src="assets/img/login_bg.jpg" alt="login background" width="1900" height="880" style="margin-top: 10px; filter: blur(5px); -webkit-filter: blur(5px)">
     <section id="auth" class="auth">
         <div class="container">
             <div class="row" style="margin:20px">
