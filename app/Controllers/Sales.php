@@ -32,12 +32,14 @@ class Sales extends BaseController
 
 	public function salesAdd()
 	{
-		if (!session()->has('loggedUser')) {
-			return redirect()->to('/')->with('fail', 'You must logged in !!!');
-		}
 		$productModel = new \App\Models\ProductModel();
-		$data['items'] = $productModel->findAll();
+		$items = $productModel->findAll();
+		$data = [
+			'meta_title' => 'Sales Record | PHP',
+			'title' => 'Sales Record',
+			'items' => $items
+		];
 
-		return view('sales/SPro_list', $data);
+		return view('sales/S_store', $data);
 	}
 }

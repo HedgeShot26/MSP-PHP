@@ -63,6 +63,7 @@
                     <li><a href="<?= site_url('users') ?>">Users</a></li>
                     <li><a href="<?= site_url('sales') ?>">Sales</a></li>
                     <li><a href="<?= site_url('catalogue') ?>">Products</a></li>
+                    <li><a href="<?= site_url('stock') ?>">Low Stocks</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>

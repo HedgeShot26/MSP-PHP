@@ -118,4 +118,23 @@ class Catalogue extends BaseController
 		$productModel->delete($Product_id);
 		return redirect()->to(base_url('catalogue'))->with('status', 'Item Deleted Successfully');
 	}
+
+	function stock()
+	{
+		if (!session()->has('loggedUser')) {
+			return redirect()->to('/')->with('fail', 'You must logged in !!!');
+		}
+		$usersModel = new \App\Models\UsersModel();
+		$productModel = new \App\Models\ProductModel();
+		$loggedUserID = session()->get('loggedUser');
+		$userInfo = $usersModel->find($loggedUserID);
+		$items = $productModel->findAll();
+		$data = [
+			'meta_title' => 'Low Stocks Products | PHP',
+			'title' => 'Low Stocks Products',
+			'userInfo' => $userInfo,
+			'items' => $items
+		];
+		return view('dashboard/stock', $data);
+	}
 }

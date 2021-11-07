@@ -56,12 +56,12 @@ $routes->post('catalogue/store', 'Catalogue::itemStore');
 $routes->get('catalogue/itemEdit/(:num)', 'Catalogue::itemEdit/$1');
 $routes->get('catalogue/itemUpdate/(:num)', 'Catalogue::itemUpdate/$1');
 $routes->get('catalogue/delete/(:num)', 'Catalogue::itemDelete/$1');
+$routes->get('stock', 'Catalogue::stock');
 
 $routes->get('sales', 'Sales::sales');
 $routes->get('sales/add', 'Sales::salesAdd');
+$routes->post('catalogue/store', 'Catalogue::itemStore');
 
-$routes->get('list', 'lists::lists');
-$routes->get('list/Addlist/(:num)', 'lists::Addlist/$1');
 
 /*
  * --------------------------------------------------------------------
