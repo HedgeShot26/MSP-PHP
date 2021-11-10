@@ -9,6 +9,7 @@ class Sales extends BaseController
 	public function __construct()
 	{
 		helper(['url', 'form']);
+		$this->load->model('SalesModel');
 	}
 
     function sales()
