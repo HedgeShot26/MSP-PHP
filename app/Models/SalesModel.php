@@ -46,4 +46,23 @@ class SalesModel extends Model{
                         ->getRowArray();
     }
 
+    function select_one_sale($sales_id)
+    {
+        return $this->db->table('sales_records')
+                        ->select('*')
+                        ->where('Sales_Id  ', $sales_id)
+                        ->get()
+                        ->getRowArray();
+    }
+
+    function select_sale_item($sales_id)
+    {
+        return $this->db->table('sales_product')
+                        ->select('*')
+                        ->where('sales_product.Sales_Id ', $sales_id)
+                        ->join('product', 'product.Product_id  = sales_product.Product_id')
+                        ->get()
+                        ->getResultArray();
+    }
+
 }

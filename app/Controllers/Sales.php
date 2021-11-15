@@ -10,13 +10,15 @@ class Sales extends BaseController
 	public function __construct()
 	{
 		helper(['url', 'form']);
+
+		if (!session()->has('loggedUser')) {
+			return redirect()->to('/')->with('fail', 'You must logged in !!!');
+		}
 	}
 
 	function sales()
 	{
-		if (!session()->has('loggedUser')) {
-			return redirect()->to('/')->with('fail', 'You must logged in !!!');
-		}
+
 		$usersModel = new \App\Models\UsersModel();
 		$loggedUserID = session()->get('loggedUser');
 
@@ -161,6 +163,17 @@ class Sales extends BaseController
 		return redirect()->to(base_url('sales'));
 	}
 
+	function view_sale($sales_id)
+	{
+		$db = db_connect();
+		$salesModel = new SalesModel($db);
 
+		$data['sale_data'] = $salesModel->select_one_sale($sales_id);
+
+		$data['sale_pro_data'] = $salesModel->select_sale_item($sales_id);
+
+		return view('sales/sales_view', $data);
+
+	}
 
 }

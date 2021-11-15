@@ -21,7 +21,7 @@
 								<tr>
 									<th>&nbsp;&nbsp;No.</th>
                                     <th>&nbsp;&nbsp;Sales No.</th>
-									<th>&nbsp;&nbsp;TotalPrice</th>
+									<th>&nbsp;&nbsp;Total Price (RM)</th>
 									<th>&nbsp;&nbsp;Date</th>
 									<th>&nbsp;&nbsp;Action</th>
 								</tr>
@@ -31,10 +31,13 @@
 									<tr class="tb-body table-shadow ">
                                         <td class="catalogue"> </td>
 										<td class="catalogue"><?= $row['Sales_Id'] ?></td>
-										<td class="catalogue" style="text-transform: uppercase;"><?= $row['Sales_TotalPrice'] ?></td>
+										<td class="catalogue" style="text-transform: uppercase;">RM <?= $row['Sales_TotalPrice'] ?></td>
                                         <td class="catalogue" style="text-transform: uppercase;"><?= $row['Sales_Date'] ?></td>
 										<td class="catalogue" style="text-align:center;">
 											<a href="<?= base_url(' sales/salesEdit/' . $row['Sales_Id']) ?>" class="btn btn-sm" style="background-color:#07689F; color:#ffffff;">EDIT</a>
+											<br>
+											<div style="height:5px;"></div>
+											<a href="<?= base_url('sales/view_sale/' . $row['Sales_Id']) ?>" class="btn btn-sm btn-info" style="color:#ffffff;">VIEW</a>
 											<br>
 											<div style="height:5px;"></div>
 											<a href="<?= base_url('sales/salesDelete/' . $row['Sales_Id']) ?>" class="btn btn-sm" style="background-color:#cf0000; color:#ffffff;">DELETE</a>
