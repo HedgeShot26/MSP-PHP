@@ -37,7 +37,13 @@ class SalesModel extends Model{
                         ->getResultArray();
     }
 
+    function select_one_product($product_id)
+    {
+        return $this->db->table('product')
+                        ->select('Product_img')
+                        ->where('Product_id ', $product_id)
+                        ->get()
+                        ->getRowArray();
+    }
 
 }
-
-?>

@@ -101,7 +101,7 @@
 		}
 
 		input:read-only {
-			background-color: white !important;
+			background-color: rgba(255, 255, 255, 0.0) !important;
 			border: 0 !important;
 		}
 	</style>
@@ -126,43 +126,50 @@
 						</h3>
 					</div>
 
-					<form action="<?= base_url('Catalogue/itemStore') ?>" method="post" enctype="multipart/form-data">
-						<?= csrf_field(); ?>
 
-						<div class="form-group mb-2">
-							<div style="float:left;" class="col-xl-6 mt-1">
-								<label class="label">Product Category</label>
-							</div>
-							<div style="float:left;" class="col-xl-6 mt-1">
-								<label class="label">Product Name</label>
-							</div>
-							<div style="float:left;" class="col-xl-6 mt-1">
-								<select name="product_category" id="product_category" class="form-control form-select" style="border: 1px solid #D8E3E7; border-radius:30px;" required>
-									<?php foreach ($category as $row) { ?>
-										<option value="<?= $row['Category'] ?>"><?= $row['Category'] ?></option>
-									<?php } ?>
-								</select>
-							</div>
-							<div style="float:left;" class="col-xl-6 mt-1">
-								<select name="Product_id" id="Product_id" class="form-control form-select" style="border: 1px solid #D8E3E7; border-radius:30px;" required>
-								</select>
-							</div>
+
+					<div class="form-group mb-2">
+						<div style="float:left;" class="col-xl-6 mt-1">
+							<label class="label">Product Category</label>
 						</div>
-						<div style="border-radius: 30px; ">
-							<div class="container">
-								<div class="row">
-									<div class="col-7 ">
+						<div style="float:left;" class="col-xl-6 mt-1">
+							<label class="label">Product Name</label>
+						</div>
+						<div style="float:left;" class="col-xl-6 mt-1">
+							<select name="product_category" id="product_category" class="form-control form-select" style="border: 1px solid #D8E3E7; border-radius:30px;" required>
+								<?php foreach ($category as $row) { ?>
+									<option value="<?= $row['Category'] ?>"><?= $row['Category'] ?></option>
+								<?php } ?>
+							</select>
+						</div>
+						<div style="float:left;" class="col-xl-6 mt-1">
+							<select name="Product_id" id="Product_id" class="form-control form-select" style="border: 1px solid #D8E3E7; border-radius:30px;" required>
+							</select>
+						</div>
+					</div>
+					<div style="border-radius: 30px; ">
+						<div class="container">
+							<div class="row">
+								<div class="col-7 ">
 
-									</div>
-									<div class="col-5">
-										<button type="button" id="add" class="btn btn-success px-5 py-2 float-end">Add</button>
-									</div>
+								</div>
+								<div class="col-5">
+									<button type="button" id="add" class="btn btn-success px-5 py-2 float-end">Add</button>
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-md-center">
+			<div class="col-lg-10 mt-lg-3">
+				<div class="container" style="border:10px solid #eeeeee; padding: 20px; border-radius:50px; box-shadow: 0 8px 18px rgba(8, 8, 8, 0.3); ">
+					<div style="height:20px;"></div>
 
-						<hr>
-
+					<form action="<?= base_url('Sales/confirm_sale_items') ?>" method="post" enctype="multipart/form-data">
+						<?= csrf_field(); ?>
+						
 						<table class="table box-table table-hover table-borderless" id="addsalestable">
 							<thead class="table-shadow title">
 								<tr>
@@ -178,6 +185,16 @@
 
 							</tbody>
 						</table>
+						<?php if (session()->getFlashdata('status')) : ?>
+							<div class="container text-center" id="alert" style="width:70%;">
+
+								<div class="bg-danger" style="border-radius: 10px;  color: white;">
+									<h4 class="mt-1 py-1">
+										<span class=""><?= session()->getFlashdata('status') ?></span>
+									</h4>
+								</div>
+							</div>
+						<?php endif ?>
 
 						<div style="height: 10px;"></div>
 
@@ -204,6 +221,10 @@
 	</div>
 
 	<script>
+		setTimeout(function() {
+			$('#alert').fadeOut();
+		}, 3000); // <-- time in milliseconds
+
 		var base_url = "<?= base_url() ?>";
 		$(document).ready(function() {
 
@@ -254,7 +275,7 @@
 				if (exist == false) {
 					$('#body').append('<tr id="row' + i + '" class="tb-body table-shadow ">' +
 						'<td style = "width:15%;"><input type="number" name="product_id[]" class="form-control product_id" value = "' + product_id + '" readonly/></td>' +
-						'<td style = "width:40%;"><input type="text" class="form-control" value = "' + product_name + '" readonly/></td>' +
+						'<td style = "width:40%;"><input type="text"   name="product_name[]" class="form-control" value = "' + product_name + '" readonly/></td>' +
 						'<td style = "width:17%;"><input type="number" name="product_price[]" class="form-control" value = "' + product_price + '" readonly/></td>' +
 						'<td><input type="number" name="product_quantity[]" class="form-control"  min = "1" max = "' + product_quantity + '" value = "1"/></td>' +
 						'<td style = "width:10%;"><input type="number" class="form-control" value = "' + product_quantity + '" readonly/></td>' +
