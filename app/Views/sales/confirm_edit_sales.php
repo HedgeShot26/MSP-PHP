@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- <?= (isset($meta_title) ? $meta_title : 'CI default title') ?> -->
-    <title>Add Sales | PHP</title>
+    <title>Edit Sales | PHP</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -121,59 +121,78 @@
 
                     <div class="mb-5" style="border-radius: 30px;background-color: #07689F; color: white; text-transform: uppercase; font-weight: bold;">
                         <h3 class="mt-1 py-1">
-                            <span class="ps-4 ">View Sale Item</span>
-                            <a href="<?= base_url('sales') ?>" class="btn btn-danger btn-sm float-end me-1 fw-bold" style="border: 3px solid red; border-radius:30px; width:20%;">BACK</a>
+                            <span class="ps-4 ">Confirm Sale Item</span>
+                            <a href="<?= base_url('sales/edit_sales/'.$sales_id) ?>" class="btn btn-danger btn-sm float-end me-1 fw-bold" style="border: 3px solid red; border-radius:30px; width:20%;">BACK</a>
                         </h3>
                     </div>
 
-                    <div class="box-table table-shadow">
-                        <table class="table box-table table-hover table-borderless" id="addsalestable">
-                            <thead class="table-shadow title">
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Product ID</th>
-                                    <th>Product Name</th>
-                                    <th>Category</th>
-                                    <th>Quantity</th>
-                                    <th>Total Product Price (RM)</th>
-                                </tr>
-                            </thead>
-                            <tbody id="body">
-                            <?php foreach ($sale_pro_data as $row) { ?>
-                                    <tr class="tb-body table-shadow ">
-                                        <td><img src="<?= base_url("uploads/" . $row['Product_img']) ?>" width="100" height="100" style="border-radius:10px;"></td>
-                                        <td><?= $row['Product_id'] ?></td>
-                                        <td><?= $row['Product_Name'] ?></td>
-                                        <td><?= $row['Category'] ?></td>
-                                        <td><?= $row['SPro_Quantity'] ?></td>
-                                        <td>RM <?= $row['SPro_Price'] ?></td>
+                    <form action="<?= base_url('Sales/update_sales/'.$sales_id) ?>" method="post" enctype="multipart/form-data">
+                        <?= csrf_field(); ?>
+                        <div class="box-table table-shadow">
+                            <table class="table box-table table-hover table-borderless" id="addsalestable">
+                                <thead class="table-shadow title">
+                                    <tr>
+                                        <th>Product ID</th>
+                                        <th>Product Name</th>
+                                        <th>Image</th>
+                                        <th>Quantity</th>
+                                        <th>Total Product Price (RM)</th>
                                     </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody id="body">
+                                    <?php foreach ($product_id as $index => $product_id) { ?>
+                                        <tr class="tb-body table-shadow ">
+                                            <td><input type="number" name="product_id[]" class="form-control product_id" value="<?= $product_id ?>" readonly /></td>
+                                            <td><?= $product_name[$index] ?></td>
+                                            <td><img src="<?= base_url("uploads/" . $product_image[$index]) ?>" width="100" height="100" style="border-radius:10px;"></td>
+                                            <td><input type="number" name="product_quantity[]" class="form-control" value="<?= $product_quantity[$index] ?>" readonly /></td>
+                                            <td><input type="number" name="product_total_price[]" class="form-control" value="<?= round($product_quantity[$index] * $product_price[$index], 2) ?>" readonly /></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
 
-                    <div style="height: 10px;"></div>
+                        <div style="height: 10px;"></div>
 
-                    <div style="border-radius: 30px; ">
-                        <div class="container">
-                            <div class="row mt-1">
-                                <div class="col-6 mt-3">
+                        <div style="border-radius: 30px; ">
+                            <div class="container">
+                                <div class="row mt-1">
+                                    <div class="col-6 mt-3">
 
-                                </div>
-                                <div class="col-3 mt-3 pt-2 ">
-                                    <h6 style="float: right; font-weight:700;">Grand Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RM</h6>
-                                </div>
-                                <div class="col-3">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <input type="number" name="grand_total_price" class="form-control product_id" value="<?= $sale_data['Sales_TotalPrice'] ?>" readonly />
+                                    </div>
+                                    <div class="col-3 mt-3 pt-2 ">
+                                        <h6 style="float: right; font-weight:700;">Grand Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RM</h6>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <input type="number" name="grand_total_price" class="form-control product_id" value="<?= $grand_total_price ?>" readonly />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                        <div style="height: 10px;"></div>
+
+                        <div style="border-radius: 30px; ">
+                            <div class="container">
+                                <div class="row mt-1">
+                                    <div class="col-7 mt-3">
+
+                                    </div>
+                                    <div class="col-5">
+                                        <button type="submit" class="btn btn-primary px-5 py-2 float-end">Confirm Sale</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+
                 </div>
             </div>
         </div>
@@ -181,7 +200,11 @@
     </div>
 
     <script>
+        var base_url = "<?= base_url() ?>";
+        $(document).ready(function() {
 
+
+        }); // end of ready function
     </script>
 
 

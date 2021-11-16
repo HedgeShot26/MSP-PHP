@@ -62,6 +62,7 @@
                     <li><a href="<?= site_url('profile') ?>">Profile</a></li>
                     <li><a href="<?= site_url('users') ?>">Users</a></li>
                     <li><a href="<?= site_url('sales') ?>">Sales</a></li>
+                    <li><a href="<?= site_url('sales/monthly_sales_report') ?>">Sales Report</a></li>
                     <li><a href="<?= site_url('catalogue') ?>">Products</a></li>
                     <li><a href="<?= site_url('stock') ?>">Low Stocks</a></li>
                 </ul>

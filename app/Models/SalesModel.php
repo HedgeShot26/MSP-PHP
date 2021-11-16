@@ -33,6 +33,7 @@ class SalesModel extends Model{
     {
         return $this->db->table('product')
                         ->where('Category', $category)
+                        ->where('Product_Quantity>', 0)
                         ->get()
                         ->getResultArray();
     }
@@ -61,6 +62,24 @@ class SalesModel extends Model{
                         ->select('*')
                         ->where('sales_product.Sales_Id ', $sales_id)
                         ->join('product', 'product.Product_id  = sales_product.Product_id')
+                        ->get()
+                        ->getResultArray();
+    }
+
+    function monthly_sales_report($month, $year)
+    {
+        $start_date = $year . "-" . $month . "-01";
+        $d = new \DateTime($start_date);
+        $end_date = $d->format('Y-m-t');
+
+        return $this->db->table('sales_product')
+                        ->select('product.Product_id, product.Product_Name, product.Category, SUM(sales_product.SPro_Quantity) AS pro_total_quantity, SUM(sales_product.SPro_Price) AS pro_total_sale')
+                        ->join('product', 'product.Product_id  = sales_product.Product_id')
+                        ->join('sales_records', 'sales_records.Sales_Id  = sales_product.Sales_Id')
+                        ->where('sales_records.Sales_Date >=', $start_date)
+                        ->where('sales_records.Sales_Date <=', $end_date)
+                        ->groupBy("sales_product.Product_id")
+                        ->orderBy('pro_total_sale', 'DESC')
                         ->get()
                         ->getResultArray();
     }

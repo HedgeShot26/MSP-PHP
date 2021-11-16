@@ -141,7 +141,7 @@
                                 </thead>
                                 <tbody id="body">
                                     <?php foreach ($product_id as $index => $product_id) { ?>
-                                        <tr>
+                                        <tr class="tb-body table-shadow ">
                                             <td><input type="number" name="product_id[]" class="form-control product_id" value="<?= $product_id ?>" readonly /></td>
                                             <td><?= $product_name[$index] ?></td>
                                             <td><img src="<?= base_url("uploads/" . $product_image[$index]) ?>" width="100" height="100" style="border-radius:10px;"></td>
