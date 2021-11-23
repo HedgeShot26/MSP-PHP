@@ -60,6 +60,7 @@ $routes->get('stock', 'Catalogue::stock');
 
 $routes->get('sales', 'Sales::sales');
 $routes->get('sales/add', 'Sales::salesAdd');
+$routes->post('sales/weekly_sales_report', 'Sales::weekly_report');
 $routes->post('catalogue/store', 'Catalogue::itemStore');
 
 

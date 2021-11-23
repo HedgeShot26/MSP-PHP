@@ -12,7 +12,7 @@
 					<h4><b><?= $title; ?></b></h4>
 					<hr>
 
-					<a href="<?= base_url('sales/add') ?>" class="btn btn-primary float-right top-btn">Add Sales</a>
+					<a href="<?= base_url('sales/salesAdd') ?>" class="btn btn-primary float-right top-btn">Add Sales</a>
 					<div style="height:10px;"></div>
 
 					<div class="box-table table-shadow">
@@ -21,7 +21,7 @@
 								<tr>
 									<th>&nbsp;&nbsp;No.</th>
                                     <th>&nbsp;&nbsp;Sales No.</th>
-									<th>&nbsp;&nbsp;TotalPrice</th>
+									<th>&nbsp;&nbsp;Total Price (RM)</th>
 									<th>&nbsp;&nbsp;Date</th>
 									<th>&nbsp;&nbsp;Action</th>
 								</tr>
@@ -30,14 +30,14 @@
 								<?php foreach ($sales as $row) : ?>
 									<tr class="tb-body table-shadow ">
                                         <td class="catalogue"> </td>
-										<td class="catalogue"><?= $row['Sales_id'] ?></td>
-										<td class="catalogue" style="text-transform: uppercase;"><?= $row['Sales_price'] ?></td>
-                                        <td class="catalogue" style="text-transform: uppercase;"><?= $row['Product_date'] ?></td>
+										<td class="catalogue"><?= $row['Sales_Id'] ?></td>
+										<td class="catalogue" style="text-transform: uppercase;">RM <?= $row['Sales_TotalPrice'] ?></td>
+                                        <td class="catalogue" style="text-transform: uppercase;"><?= $row['Sales_Date'] ?></td>
 										<td class="catalogue" style="text-align:center;">
-											<a href="<?= base_url(' sales/salesEdit/' . $row['Sales_id']) ?>" class="btn btn-sm" style="background-color:#07689F; color:#ffffff;">EDIT</a>
+											<a href="<?= base_url(' sales/edit_sales/' . $row['Sales_Id']) ?>" class="btn btn-sm" style="background-color:#07689F; color:#ffffff;">EDIT</a>
 											<br>
 											<div style="height:5px;"></div>
-											<a href="<?= base_url('sales/salesDelete/' . $row['Sales_id']) ?>" class="btn btn-sm" style="background-color:#cf0000; color:#ffffff;">DELETE</a>
+											<a href="<?= base_url('sales/view_sale/' . $row['Sales_Id']) ?>" class="btn btn-sm btn-info" style="color:#ffffff;">VIEW</a>
 										</td>
 									</tr>
 								<?php endforeach; ?>

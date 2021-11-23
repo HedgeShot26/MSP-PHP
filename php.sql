@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2021 at 03:30 PM
+-- Generation Time: Nov 20, 2021 at 06:27 AM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,8 +51,8 @@ INSERT INTO `product` (`Product_id`, `Product_Name`, `Product_img`, `Category`, 
 (15, 'Durex Fetherlite 12s', '1635670161_33e7a256e5b7180fb264.jpg', 'Sexual Wellness', 36.9, 25),
 (16, 'Loreal Revitalift Dermalift Eye Cream 15ml', '1635670392_67e1121565a55f3f31e5.jpg', 'Skin Care & Beauty', 50.5, 8),
 (17, 'MZDK Tea Tree Oil Serum', '1635670442_0869e4a19deedebcee37.png', 'Skin Care & Beauty', 68, 8),
-(18, ' Bragg Apple Cider Vinegar 946ml', '1635670505_9a96f3d6b024a203dd5e.jpg', 'Healthy Foods & Drinks', 26.2, 5),
-(19, ' Brands Chicken Essence 70g 10s', '1635670556_b04149b141c2abe1028c.jpg', 'Healthy Foods & Drinks', 58, 5),
+(18, ' Bragg Apple Cider Vinegar 946ml', '1635670505_9a96f3d6b024a203dd5e.jpg', 'Healthy Foods & Drinks', 26.2, 3),
+(19, ' Brands Chicken Essence 70g 10s', '1635670556_b04149b141c2abe1028c.jpg', 'Healthy Foods & Drinks', 58, 3),
 (20, ' Rin Enzyme 1000ml', '1635670587_f9a56211fe55c26872bd.jpg', 'Healthy Foods & Drinks', 299, 1),
 (21, ' 50 Megumi Anti-Hair Loss Conditioner (Fresh) 250ml', '1635670764_6ca7f80d1dab0ebed53a.jpg', 'Personal Care Products', 45, 6),
 (22, ' AVEENO DAILY MOIST BODY WASH 354ML', '1635670980_8fb18be22cc251c1e84b.jpg', 'Personal Care Products', 35.2, 7);
@@ -66,10 +66,25 @@ INSERT INTO `product` (`Product_id`, `Product_Name`, `Product_img`, `Category`, 
 CREATE TABLE `sales_product` (
   `SPro_id` int(11) NOT NULL,
   `Product_id` int(11) NOT NULL,
-  `Sales_id` int(11) NOT NULL,
+  `Sales_Id` int(11) NOT NULL,
   `SPro_Quantity` int(11) NOT NULL,
   `SPro_Price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sales_product`
+--
+
+INSERT INTO `sales_product` (`SPro_id`, `Product_id`, `Sales_Id`, `SPro_Quantity`, `SPro_Price`) VALUES
+(1, 8, 1, 2, 15),
+(2, 9, 1, 5, 10),
+(3, 10, 2, 3, 55),
+(4, 11, 2, 4, 40),
+(9, 18, 5, 2, 52.4),
+(10, 19, 5, 1, 58),
+(13, 18, 6, 2, 36),
+(14, 19, 6, 2, 38),
+(15, 20, 6, 1, 299);
 
 -- --------------------------------------------------------
 
@@ -82,6 +97,16 @@ CREATE TABLE `sales_records` (
   `Sales_TotalPrice` double NOT NULL,
   `Sales_Date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sales_records`
+--
+
+INSERT INTO `sales_records` (`Sales_Id`, `Sales_TotalPrice`, `Sales_Date`) VALUES
+(1, 10, '2021-11-11'),
+(2, 15, '2021-11-11'),
+(5, 110.4, '2021-11-16'),
+(6, 373, '2021-11-16');
 
 -- --------------------------------------------------------
 
@@ -101,7 +126,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
-(1, 'Choo', 'test@gmail.com', 'test1234'),
+(1, 'Choo', 'test@gmail.com', 'test123'),
 (2, 'Henry', 'henry@gmail.com', 'henry123');
 
 --
@@ -146,13 +171,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `sales_product`
 --
 ALTER TABLE `sales_product`
-  MODIFY `SPro_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SPro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `sales_records`
 --
 ALTER TABLE `sales_records`
-  MODIFY `Sales_Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Sales_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
